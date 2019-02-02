@@ -1,0 +1,78 @@
+Building mobile apps with gomobile
+
+26 February 2019
+Tags: go, gomobile, ios, android
+
+Spyros Gerokostas
+iOS Engineer
+
+spiros.gerokostas@gmail.com
+https://github.com/sger
+https://gr.linkedin.com/in/spiros-gerokostas/
+@sger
+
+* What is this?
+
+*Gomobile* is a set of tools and packages that automates the process for building mobile apps.
+
+* Caution
+
+.image img/caution.png
+
+The Go Mobile project is experimental. Use this at your own risk. While we are working hard to improve it, neither Google nor the Go team can provide end-user support.
+
+* Gomobile supports two strategies
+
+- Writing all Go native mobile applications.
+- Writing SDK applications by generating bindings from a Go package and invoke them from Java (on Android) and Objective-C (on iOS).
+
+* Advantages
+
+- Use the same code for all mobile platforms (iOS, Android).
+- Reusable go code.
+
+* Disadvantages
+
+- Supports only iOS and Android.
+- Only a subset of Go types are currently supported.
+- Language bindings have a performance overhead.
+- There are a few limitations on how the exported APIs should look due to the limitations of the target language.
+
+* Setup
+
+- You need to have Go 1.5 or above to install mobile tools.
+- On OS X, you will need to install Xcode Command Line Tools and Xcode.
+
+Install:
+
+$ go get golang.org/x/mobile/cmd/gomobile
+$ gomobile init
+
+Tools:
+
+- Xcode
+- Android Studio
+
+Configuration needed on Android:
+
+$ gomobile init -ndk $HOME/Library/Android/sdk/ndk-bundle
+$ export ANDROID_HOME=$HOME/Library/Android/sdk
+
+* Code Examples
+
+* Projects
+
+*Ivy*
+- Source code [[https://github.com/robpike/ivy]]
+
+*react-goku*
+- Source code [[https://github.com/miguelespinoza/react-goku]]
+
+* Links
+
+- Gomobile wiki [[https://github.com/golang/go/wiki/Mobile]]
+- Gomobile Godoc [[https://godoc.org/golang.org/x/mobile]]
+- Gomobile source at Github [[https://github.com/golang/mobile/]]
+
+
+
