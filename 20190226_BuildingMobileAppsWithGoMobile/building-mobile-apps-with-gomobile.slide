@@ -3,8 +3,8 @@ Building mobile apps with gomobile
 26 February 2019
 Tags: go, gomobile, ios, android
 
-Spyros Gerokostas
-iOS Engineer
+Spiros Gerokostas
+iOS Developer
 
 spiros.gerokostas@gmail.com
 https://github.com/sger
@@ -13,7 +13,9 @@ https://gr.linkedin.com/in/spiros-gerokostas/
 
 * What is this?
 
-*Gomobile* is a set of tools and packages that automates the process for building mobile apps.
+*Gomobile* is a set of tools and packages that automates the process for building mobile apps for *iOS* and *Android*.
+
+.image img/ios_android.png 300 _
 
 * Caution
 
@@ -25,11 +27,21 @@ The Go Mobile project is experimental. Use this at your own risk. While we are w
 
 - Writing all Go native mobile applications.
 - Writing SDK applications by generating bindings from a Go package and invoke them from Java (on Android) and Objective-C (on iOS).
+- Internally it uses *cgo* to generate bindings for iOS and Android through.
+
+.image img/gobind.png 300 _
+
+* How gomobile works?
+
+*cgo* lets go packages call C code. Given a Go source file written with some special features, cgo outputs Go and C files that can be combined into a single Go package.
+
+.image img/gobind_diagram.png 300 _
 
 * Advantages
 
+- Written applications entirely in Go.
 - Use the same code for all mobile platforms (iOS, Android).
-- Reusable go code.
+- Reusable go code(SDKs).
 
 * Disadvantages
 
@@ -40,13 +52,13 @@ The Go Mobile project is experimental. Use this at your own risk. While we are w
 
 * Setup
 
-- You need to have Go 1.5 or above to install mobile tools.
+- You need to have Go 1.5 or above to install gomobile tools.
 - On OS X, you will need to install Xcode Command Line Tools and Xcode.
 
 Install:
 
-$ go get golang.org/x/mobile/cmd/gomobile
-$ gomobile init
+    $ go get golang.org/x/mobile/cmd/gomobile
+    $ gomobile init
 
 Tools:
 
@@ -55,10 +67,26 @@ Tools:
 
 Configuration needed on Android:
 
-$ gomobile init -ndk $HOME/Library/Android/sdk/ndk-bundle
-$ export ANDROID_HOME=$HOME/Library/Android/sdk
+    $ gomobile init -ndk $HOME/Library/Android/sdk/ndk-bundle
+    $ export ANDROID_HOME=$HOME/Library/Android/sdk
 
 * Code Examples
+
+    $ git clone https://github.com/sger/gomobile-examples
+
+iOS:
+
+    $ gomobile bind -target=ios github.com/sger/gomobile-examples/mypackage
+    $ gomobile bind -target=ios github.com/sger/gomobile-examples/mypkg
+
+Android:
+
+    $ gomobile bind -o app/mypackage.aar -target=android github.com/sger/gomobile-examples/mypackage
+    $ gomobile bind -o app/mypkg.aar -target=android github.com/sger/gomobile-examples/mypkg
+
+Bug:
+
+https://github.com/golang/go/issues/29706
 
 * Projects
 
@@ -71,6 +99,7 @@ $ export ANDROID_HOME=$HOME/Library/Android/sdk
 * Links
 
 - Gomobile wiki [[https://github.com/golang/go/wiki/Mobile]]
+- Gomobile gobind [[https://godoc.org/golang.org/x/mobile/cmd/gobind]]
 - Gomobile Godoc [[https://godoc.org/golang.org/x/mobile]]
 - Gomobile source at Github [[https://github.com/golang/mobile/]]
 
