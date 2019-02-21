@@ -37,6 +37,18 @@ The Go Mobile project is experimental. Use this at your own risk. While we are w
 
 .image img/gobind_diagram.png 300 _
 
+* How gomobile bindings work?
+
+.code mypkg.go 
+
+* Converted to Objective-C
+
+.code Mypkg.objc.h
+
+* Converted to Java
+
+.code Mypkg.java
+
 * Advantages
 
 - Written applications entirely in Go.
@@ -81,12 +93,8 @@ iOS:
 
 Android:
 
-    $ gomobile bind -o app/mypackage.aar -target=android github.com/sger/gomobile-examples/mypackage
-    $ gomobile bind -o app/mypkg.aar -target=android github.com/sger/gomobile-examples/mypkg
-
-Bug:
-
-https://github.com/golang/go/issues/29706
+    $ gomobile bind -o mypackage.aar -target=android github.com/sger/gomobile-examples/mypackage
+    $ gomobile bind -o mypkg.aar -target=android github.com/sger/gomobile-examples/mypkg
 
 * Projects
 

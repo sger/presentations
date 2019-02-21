@@ -1,8 +1,0 @@
-framework module "Log" {
-	header "ref.h"
-    header "Log.objc.h"
-    header "Universe.objc.h"
-    header "Log.h"
-
-    export *
-}
