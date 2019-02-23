@@ -125,6 +125,11 @@ Tools:
     $ go build main.go
     $ ./main
 
+*basic example*:
+
+    $ gomobile build github.com/sger/gomobile-examples/basic
+    $ go install github.com/sger/gomobile-examples/basic && basic
+
 iOS:
 
     $ gomobile bind -target=ios github.com/sger/gomobile-examples/mypackage
