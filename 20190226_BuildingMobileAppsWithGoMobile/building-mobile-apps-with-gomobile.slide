@@ -4,11 +4,12 @@ Building mobile apps with gomobile
 Tags: go, gomobile, ios, android
 
 Spiros Gerokostas
-iOS Developer
+iOS Developer, Beat
 
 spiros.gerokostas@gmail.com
 https://github.com/sger
 https://gr.linkedin.com/in/spiros-gerokostas/
+https://www.spirosgerokostas.com/
 @sger
 
 * What is this?
@@ -27,15 +28,21 @@ The Go Mobile project is experimental. Use this at your own risk. While we are w
 
 - Writing all Go native mobile applications.
 - Writing SDK applications by generating bindings from a Go package and invoke them from Java (on Android) and Objective-C (on iOS).
-- Internally it uses *cgo* to generate bindings for iOS and Android through.
 
 .image img/gobind.png 300 _
 
 * How gomobile works?
 
-*cgo* lets go packages call C code. Given a Go source file written with some special features, cgo outputs Go and C files that can be combined into a single Go package.
+- Internally it uses *cgo* to generate bindings for iOS and Android through.
+- *cgo* lets go packages call C code. Given a Go source file written with some special features, cgo outputs Go and C files that can be combined into a single Go package.
+- *cgo* codes also can be cross-compiled
 
 .image img/gobind_diagram.png 300 _
+
+* Cross-compile
+
+    $ GOOS=windows GOARCH=386 go build
+    $ GOOS=linux GOARCH=arm go build
 
 * How gomobile bindings work?
 
@@ -59,32 +66,64 @@ The Go Mobile project is experimental. Use this at your own risk. While we are w
 
 - Supports only iOS and Android.
 - Only a subset of Go types are currently supported.
+
+    Interface
+    struct type
+    functions
+    Byte slice type
+    string and boolean type
+    floating point type and signed integer
+
 - Language bindings have a performance overhead.
 - There are a few limitations on how the exported APIs should look due to the limitations of the target language.
 
 * Setup
 
 - You need to have Go 1.5 or above to install gomobile tools.
-- On OS X, you will need to install Xcode Command Line Tools and Xcode.
+- On OS X, you will need to install Xcode Command Line Tools and Xcode, Android Studio.
+- On Android Studio its important to install NDK.
 
 Install:
 
     $ go get golang.org/x/mobile/cmd/gomobile
     $ gomobile init
+    $ gomobile init -v
 
 Tools:
 
 - Xcode
 - Android Studio
 
-Configuration needed on Android:
+* Configuration needed on Android:
 
     $ gomobile init -ndk $HOME/Library/Android/sdk/ndk-bundle
     $ export ANDROID_HOME=$HOME/Library/Android/sdk
 
+* gomobile sub-commands
+
+    bind build a library for Android and iOS
+    build compile Android .apk and iOS .ipa
+    clean remove object files and cached gomobile files
+    init install NDK toolchains and build OpenAL for Android
+    install compile android APK and install on device
+    version print version 
+
+* gomobile bind
+
+- generate an android archive(.aar)
+    $ gomobile bind -target=ios package
+
+- generate an iOS framework
+    $ gomobile bind -target=android package
+
 * Code Examples
 
     $ git clone https://github.com/sger/gomobile-examples
+
+*cgo*:
+
+    $ go build main.go
+    $ ./main
 
 iOS:
 
