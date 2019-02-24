@@ -82,6 +82,7 @@ The Go Mobile project is experimental. Use this at your own risk. While we are w
 - You need to have Go 1.5 or above to install gomobile tools.
 - On OS X, you will need to install Xcode Command Line Tools and Xcode, Android Studio.
 - On Android Studio its important to install NDK.
+- The Android NDK is a toolset that lets you implement parts of your app in native code, using languages such as C and C++.
 
 Install:
 
@@ -107,13 +108,14 @@ Tools:
     init install NDK toolchains and build OpenAL for Android
     install compile android APK and install on device
     version print version 
+    help print help about how to use gomobile tools
 
 * gomobile bind
 
-- generate an android archive(.aar)
+- generate an android archive (.aar)
     $ gomobile bind -target=ios package
 
-- generate an iOS framework
+- generate an iOS framework (.framework)
     $ gomobile bind -target=android package
 
 * Code Examples
