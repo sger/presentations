@@ -125,7 +125,7 @@ Tools:
     $ go build main.go
     $ ./main
 
-*basic example*:
+*basic*:
 
     $ gomobile build github.com/sger/gomobile-examples/basic
     $ go install github.com/sger/gomobile-examples/basic && basic
@@ -139,6 +139,17 @@ Android:
 
     $ gomobile bind -o mypackage.aar -target=android github.com/sger/gomobile-examples/mypackage
     $ gomobile bind -o mypkg.aar -target=android github.com/sger/gomobile-examples/mypkg
+
+* gRPC example
+
+    $ git clone https://github.com/sger/go-chat
+    $ cd go-chat/backend
+    $ make get
+    $ make protos
+    $ make ios
+    $ make android
+    $ cd ../frontend
+    $ go run main.go
 
 * Projects
 
